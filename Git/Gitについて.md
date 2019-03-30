@@ -68,7 +68,7 @@
 
 ## log  
   変更履歴を確認する  
-  例： `git log` `git log --oneline`　一行で表示する  
+  例： `git log`   `git log --oneline`　一行で表示する    
       `git log -p index.html` ファイルの変更差分を表示する  
       `git log -n <コミット数>` 表示するコミット数を制限する
   
