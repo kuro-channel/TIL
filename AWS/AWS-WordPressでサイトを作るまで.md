@@ -17,3 +17,19 @@ Route53 / CloudWatch / IAM / CloudTrail
 ## 1.AWSでサーバーを立てる
 - サーバー：**Amazon Elastic Compute Cloud（EC2）** ※AWSではサーバーのことを「**インスタンス**」と呼ぶので注意
 - AMI：Amazon マシーン イメージ…サーバーのもととなるテンプレート。Amazon AMIを入れよう。  
+**STEP1：AMIの選択**　※AMIにも種類がたくさんある  
+ > Amazon マシンイメージ (AMI)について https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/AMIs.html
+ > Amazon Linuxについて https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/amazon-linux-ami-basics.html  
+**STEP2：インスタンスタイプの選択**  
+  無料枠の対象は「t2.micro」 / 小〜中規模：T2インスタンス、DBやキャッシュを処理：M5インスタンス（サーバーのスペック）  
+**STEP3：インスタンスの詳細の設定**　デフォルトでOK。  
+**STEP4：ストレージの追加**  EBS（Amazon Elastic Block Store） デフォルトでOK  
+ > EBS（Amazon Elastic Block Store） https://aws.amazon.com/jp/ebs/?nc2=type_a  
+**STEP5：タグの追加** インスタンスにタグをつけて分類できる。（見やすいように）  
+ex） key: enviroment - value:production、key: enviroment - value:staging 本番とステージングで分かりやすくする  
+**STEP6：セキュリティグループの設定**  
+ファイアーウォール（自宅からアクセスは通すけど、それ以外からは通さない）:特定の通信のみを通してそれ以外は阻止する  
+**STEP7:起動、キーペアの作成→インスタンスの作成完了**  
+キーペアは無くさない所に保存すること。後から再ダウンロード出来ないので・・・。
+
+## 2.SSHでサーバーに接続
