@@ -35,3 +35,15 @@ ex） key: enviroment - value:production、key: enviroment - value:staging 本�
 キーペアは無くさない所に保存すること。後から再ダウンロード出来ないので・・・。
 
 ## 2.SSHでサーバーに接続
+- SSHとは：Secure Shellの略。**リモートコンピュータと通信するためのプロトコル。**  
+認証部分を含めネットワーク上の通信がすべて暗号化されるため、安全に通信することができる。  
+→ 先ほど作成した「キーペア」を使って、鍵認証でサーバーにログインする。  
+```chmod 600 ~/Desktop/start-aws-keypair.pom```  
+```ssh ec2-user@IPパブリックIP -i ~/Desktop/start-aws-keypair.pom```  
+- chmodコマンド https://qiita.com/ntkgcj/items/6450e25c5564ccaa1b95  
+　↑ファイル or ディレクトリに対する権限を設定するコマンド。
+- EC2においてIPアドレスは動的：インスタンスが停止されると、そのインスタンスに紐づいたIPアドレスが解放されてしまい、新しいIPが紐づけられる  
+- **ElasticIPの設定**:再起動しても変わらないElasticIPを設定する  
+**手順**：「新しいアドレスの割り当て」→「アドレスの関連付け」 ※EC2のIPv4パブリックと作成したElasticIPを紐づける。
+
+## ３.ターミナルで作業：サーバーの設定
