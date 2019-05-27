@@ -1,3 +1,33 @@
+## JavaにおけるequalsとhashCode - 同一性と同値性の違い
+```
+// オブジェクトの同一性
+User user1 = new User(1, "田中");
+User user2 = user1;
+```
+↑ user1とuser2は同じ（同一）のオブジェクトを参照している。  
+User1　▷ User id=1, name="田中" ◁ User2  
+```
+// ブジェクトの”同値性(等価性)”
+User user3 = new User(1, "田中");
+User user4 = new User(2, "鈴木");
+User user5 = new User(1, "鈴木");
+```
+user3とuser5はIDの値において"同値"のオブジェクト。  
+user4とuser5は名前の値において"同値"のオブジェクト。    
+```
+// オブジェクトの同値性の判定方法
+// UserクラスのequalsメソッドがIDを比較条件として実装されている場合
+user3.equals(user4) // ⇒ false
+user3.equals(user5) // ⇒ true
+user4.equals(user5) // ⇒ false
+
+// Userクラスのequalsメソッドが名前を比較条件として実装されている場合
+user3.equals(user4) // ⇒ false
+user3.equals(user5) // ⇒ false
+user4.equals(user5) // ⇒ true    
+```
+「**文字列の等値チェックは必ずequalsメソッドで！！**」
+
 ## staticと非static
 - static = 静的、クラスに張り付く、インスタンスに応じて変動しない：「クラスメソッド」　インスタンスに依存しない、クラスが実行する。クラス固有。  
 - 非static = インスタンス変数にアクセスして、インスタンス毎に結果の異なる処理を書く：「インスタンスメソッド」
