@@ -3,6 +3,7 @@
 // オブジェクトの同一性
 User user1 = new User(1, "田中");
 User user2 = user1;
+user1 == user2 // ⇒ true
 ```
 ↑ user1とuser2は同じ（同一）のオブジェクトを参照している。  
 User1　▷ User id=1, name="田中" ◁ User2  
