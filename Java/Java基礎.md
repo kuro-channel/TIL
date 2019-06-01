@@ -1,3 +1,7 @@
+## 三項演算子
+```String result = (str == "abc") ? "Samurai" : "Engineer";```
+- 条件式 ? trueの場合の戻り値 : falseの場合の戻り値
+
 ## JavaにおけるequalsとhashCode - 同一性と同値性の違い
 ```
 // オブジェクトの同一性
