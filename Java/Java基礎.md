@@ -1,3 +1,52 @@
+## スーパークラスのコンストラクタを呼ぶ："super"で呼び出す
+```
+// Bookクラス
+class Book{
+
+    // タイトル
+    private String title;
+
+    // 価格
+    private int price;
+
+    // コンストラクタ
+    public Book(String title, int price){
+        this.title = title;
+        this.price = price;
+    }
+
+    // タイトル取得メソッド
+    public String getTitle(){
+        return title;
+    }
+
+    // 価格取得メソッド
+    public int getPrice(){
+        return price;
+    }
+}
+
+// Magazineクラス
+class Magazine extends Book{
+	// 表紙を飾る人
+	String coverPersonName;
+
+	// コンストラクタ
+	public Magazine(String title, int price, String coverPersonName){
+		super(title,price);
+		this.coverPersonName = coverPersonName;
+	}
+
+	void show() {
+		System.out.println(super.getTitle() + "絶賛発売中！！");
+		System.out.println("定価" + super.getPrice() +"円");
+		System.out.println("今回の表紙：" + this.coverPersonName + "さん");
+	}
+
+}
+
+```
+
 ## staticキーワードの付くクラスフィールド・クラスメソッドは特殊なもの
 - 「クラスで共通のフィールド・メソッド」:インスタンスごとに持つ必要のないクラス共通のデータなのでstaticありのクラスフィールドを定義する
 
