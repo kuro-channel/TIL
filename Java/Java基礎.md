@@ -1,3 +1,6 @@
+## 定数
+```static final修飾子```
+
 ## 抽象クラス
 ```
 abstract class クラス名 {
