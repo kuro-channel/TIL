@@ -1,3 +1,10 @@
+## 抽象クラス
+```
+abstract class クラス名 {
+    abstract 戻り値の型名 メソッド名(引数);
+}
+```
+
 ## アクセス修飾子
 - public
 - protected
