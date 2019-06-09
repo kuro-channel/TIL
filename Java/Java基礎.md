@@ -1,3 +1,25 @@
+## instanceof演算子
+- instanceof演算子とは:あるオブジェクトの型を動的に判定するための演算子です。
+
+```
+以下のような用途で用います。
+
+オブジェクトが、あるクラスのインスタンスか
+オブジェクトが、あるクラスの子クラスのインスタンスか
+オブジェクトが、特定のインターフェースを実装したインスタンスか
+
+例：オブジェクト instanceof 型
+Birds[] birds = {new Swallow(), new Penguin(), new Atthis()};
+	for(Birds bird: birds) {
+		// 食べる
+        	bird.eat();
+        	// 飛行可能な鳥の場合
+        	if(bird instanceof Swimable) {
+        	// 処理	
+       　}
+
+```
+
 ## 定数
 ```static final修飾子```
 
