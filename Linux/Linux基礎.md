@@ -1,3 +1,43 @@
+## awk
+- awkはテキストの各行に対して pattern { action } を実行する。  
+- pattern にマッチする行に action を実行する。 **awkで1フィールド目を取り出すコマンドは、「print $1」です**  
+- フィールド区切り文字=「,」とか「/」で区切ってあるfileの時、指定したフィールド区切り文字で認識してくれる。  
+
+```awk -F'[フィールド区切り文字(複数可能)]' -v '変数=xx' '{awkコマンド}' file```
+
+```
+> touch user.csv
+id,name,age
+1,佐藤,19
+2,伊藤,20
+3,加藤,21
+
+> cat user.csv | awk -F ',' '{print $0}'
+id,name,age
+1,佐藤,19
+2,伊藤,20
+3,加藤,21
+
+> cat user.csv | awk -F ',' '{print $1}'
+id
+1
+2
+3
+
+> cat user.csv | awk -F ',' '{print $2}'
+name
+佐藤
+伊藤
+加藤
+
+> cat user.csv | awk -F ',' '{print $3}'
+age
+19
+20
+21
+
+```
+
 ## リダイレクト
 ```> 新規ファイル作成 >> ファイルに内容追加``` 
 
