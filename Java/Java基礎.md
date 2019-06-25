@@ -30,6 +30,7 @@ Birds[] birds = {new Swallow(), new Penguin(), new Atthis()};
 
 ## 定数
 ```static final修飾子```
+- 一度しか値を代入することができない変数をfinalを使うと宣言することができる。
 
 ## 抽象クラス
 ```
