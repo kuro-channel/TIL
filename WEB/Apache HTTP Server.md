@@ -2,6 +2,8 @@
 - Apache（アパッチ）とは世界中で使用されているWebサーバーソフトウェア(HTTPサーバー) OSS（オープンソフトウェア）
 - アクセスログ > http://ossfan.net/setup/httpd-06.html  
 → Apache HTTP サーバのアクセスログ（/var/log/httpd/access_log）
+- Apacheのアクセスログは処理がされた後に書き込まれる！ステータスコード200を返していたら、そのリクエストを処理してレスポンスを返しているということ。
+- Apacheログ（/var/log/httpd/access_log）のフォーマットは、/etc/httpd/conf/httpd,confにあるLogFormatディレクティブで設定する。
 
 ```
 アクセス元IP毎のアクセス数(Top30)
