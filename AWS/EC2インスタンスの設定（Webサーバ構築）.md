@@ -1,4 +1,4 @@
-# やりたいこと：EC2にsshで入って、EC2にWebサーバの設定をする
+# やりたいこと：EC2にsshで入って、EC2にWebサーバの設定をする ※Amazon Linux1での設定
 
 ## ホスト名の変更
 
@@ -95,15 +95,12 @@ ServerName もコメントアウトを外して、hostname に変更する
 sudo /etc/init.d/httpd configtest
 
 ## EC2 インスタンス再起動時に、自動で httpd プロセスが上がるように設定
-
 sudo chkconfig httpd on
 
 ## httpd の立ち上げ
-
 sudo service httpd start
 
 ## PHP の設定
-
 sudo vim /etc/php.ini
 
 ====
