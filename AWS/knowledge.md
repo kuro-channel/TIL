@@ -30,3 +30,8 @@ Amazon EC2 Auto Scaling のグループはこのサイズよりも小さくな�
 - データはいつでもダウンロード可能
 - 柔軟なアクセス制御ができる（IAM、アクセスコントロール、バケットポリシー）
 - **Amazon Simple Storage Service (Amazon S3) はインターネット用のストレージ。Amazon S3 を使用すると、データの大きさにかかわらず、ウェブ上のどんな場所からでもいつでも保存、取得することができる。**
+- S3のオブジェクト  
+● オブジェクトキー：バケット内のオブジェクトは「一意」に識別される。（重複はなし）  
+● フォルダ階層になっているとき：区切り記号（"/"）でフォルダ構造を表す。  
+　```foo - bar.csv → foo/bar.csv```
+● Amazon S3 Java API： S3をJava APIで操作するAPI  参考リンク：http://www.ne.jp/asahi/hishidama/home/tech/aws/s3/api.html
