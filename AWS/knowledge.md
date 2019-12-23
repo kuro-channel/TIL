@@ -35,3 +35,12 @@ Amazon EC2 Auto Scaling のグループはこのサイズよりも小さくな�
 ● フォルダ階層になっているとき：区切り記号（"/"）でフォルダ構造を表す。  
 　```foo - bar.csv → foo/bar.csv```  
 ● Amazon S3 Java API： S3をJava APIで操作するAPI  参考リンク：http://www.ne.jp/asahi/hishidama/home/tech/aws/s3/api.html
+
+
+## Elasticsearchとは？
+- Elastic社が開発している、スケーラビリティに優れた全文検索エンジン
+- リアルタイムデータ分析、ログ解析、全文検索など様々な分析が可能になる
+- ログ集約のLogstashやfluentd、可視化ツールのkibanaと一緒に使われることが多い
+- 複数のデータベースを横断して検索することが、ごく当たり前の用途として提供されている 
+https://qiita.com/r548/items/3622048a622d9c0acc05
+https://aws.amazon.com/jp/elasticsearch-service/the-elk-stack/what-is-elasticsearch/
