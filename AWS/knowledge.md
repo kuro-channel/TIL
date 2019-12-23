@@ -42,5 +42,5 @@ Amazon EC2 Auto Scaling のグループはこのサイズよりも小さくな�
 - リアルタイムデータ分析、ログ解析、全文検索など様々な分析が可能になる
 - ログ集約のLogstashやfluentd、可視化ツールのkibanaと一緒に使われることが多い
 - 複数のデータベースを横断して検索することが、ごく当たり前の用途として提供されている 
-https://qiita.com/r548/items/3622048a622d9c0acc05
+https://qiita.com/r548/items/3622048a622d9c0acc05  
 https://aws.amazon.com/jp/elasticsearch-service/the-elk-stack/what-is-elasticsearch/
