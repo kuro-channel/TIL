@@ -18,11 +18,13 @@
 ### SaaS（Software as a Service）･･･　ソフトウェアを提供するクラウドサービス
 - ソフトウェアをインターネットを通じて使えるサービス。オフィスソフトをWebブラウザ上で使えたり、データをクラウドに保存したり、共有したり出来る。  
 - 提供するもの：ソフトウェア / 具体的なサービス：Google Docs, Office Online 
+> salesforce.comやOffice 365などがあります。また、GoogleマップやGoogle Earth、乗り換え案内サービスなどもSaaS
 
 ### PaaS（Platform as a Service）･･･　開発環境を提供するクラウドサービス
 - PHPやRuby,Javascript等で作ったアプリケーションを簡単に動かせるサービス。普通はWebサーバ立てたり、OSの設定したりと面倒くさい…  
 → 作ったアプリケーションをアップロードするだけで動く。
 - 提供するもの：アプリケーション実行環境 / 具体的なサービス：**Heroku**,Google App Engine
+> Monaca、Cloud9、Eclipse Orion、Google App Engine
 
 ### Herokuとは？
 https://jp.heroku.com/
@@ -36,3 +38,4 @@ https://jp.heroku.com/
 - 仮想マシンや仮想ネットワーク等のインフラを提供するサービス。スペックやOSを自由に選べたり、ネットワークの構成を好きに変えられる等、自由度高い。  
 ※ ホスティングサービスやVPSの進化版！
 - 提供するもの：サーバ、ネットワーク / 具体的なサービス：Amazon EC2、GCP Compute Engine
+> クラウド上に大容量データを保存できるクラウドストレージサービスは、以前はHaaS（Hardware as a Service）と呼ばれていましたが、現在はIaaSとされています。これにはDropboxやGoogleドライブ、Yahoo!ボックス、iCloud Driveなどがあります。
