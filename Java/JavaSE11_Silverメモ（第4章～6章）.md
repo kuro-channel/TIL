@@ -99,3 +99,39 @@ while(cnt++ <5)
   }
   System.out.println(num); // 13
   ```
+  
+  ### 第5章：配列の操作 めちゃ重要！
+  - 配列：値の集合を扱うための「インスタンス」
+    - Javaにおける配列：「配列クラス」から作られた「インスタンス」であり、値の集合を扱うことを目的としている。（値：要素）  
+    - 配列の特徴 > 同じ型、互換性のある型の値しか扱えない / 扱える要素数はインスタンス生成時に決める。後で要素数を変えることはできない。
+  <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF.jpg" alt="配列" title="配列">
+  
+  ```
+  int[] array = new int[3]; // 配列インスタンスを生成し、配列型変数には配列インスタンスの参照を代入する
+  ```
+  
+  - 配列型変数の宣言方法
+  ```
+  配列型変数の宣言1,2
+  int[] array;
+  int array[];
+  
+  2次元配列、3次元配列の配列型変数の宣言1,2
+  int[][] arrayA;
+  int[] arrayA[];
+  int arrayB [][][];
+  int[][] arrayB[];
+  ```
+  
+  - 配列型変数と配列
+    - 配列型変数には、配列インスタンスへの参照を代入するだけ。配列型変数を宣言する時は、要素数を指定することはできない。  
+    ```
+    int[2] array; // コンパイルエラー
+    ```
+  <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E9%85%8D%E5%88%97%E5%9E%8B%E5%A4%89%E6%95%B0%E3%81%A8%E9%85%8D%E5%88%97.jpg" alt="配列型変数と配列" title="配列型変数と配列">
+  
+  - 2次元配列のインスタンス  
+  ```
+  int[][] array = new int[3][3];
+  ```
+<img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E5%A4%9A%E6%AC%A1%E5%85%83%E9%85%8D%E5%88%97%E3%81%A8%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0.jpg" alt="多次元配列と配列の要素数" title="多次元配列と配列の要素数">
