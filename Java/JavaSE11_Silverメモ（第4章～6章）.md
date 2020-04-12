@@ -135,3 +135,62 @@ while(cnt++ <5)
   int[][] array = new int[3][3];
   ```
 <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E5%A4%9A%E6%AC%A1%E5%85%83%E9%85%8D%E5%88%97%E3%81%A8%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0.jpg" alt="多次元配列と配列の要素数" title="多次元配列と配列の要素数">
+
+- 配列インスタンスと要素
+  - 配列インスタンスと配列の要素は異なるものであるため、配列インスタンス生成後、**要素に値を代入する必要がある。**
+```
+int[] array = new int[3];
+System.out.println(array[0]); // 0
+array[0] = 10;
+array[1] = 20;
+array[2] = 30;
+System.out.println(array[0]); // 10
+System.out.println(array[1]); // 20
+System.out.println(array[2]); // 30
+```
+```
+【Mainクラス】
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Item[] items = new Item[3];
+        int total = 0;
+        for(int i = 0; i < items.length; i++){
+            total += items[i].price;　// java.lang.NullPointerException
+            // 配列インスタンスは生成したが、Itemクラスのインスタンスは生成していない。デフォルト：null を参照してヌルぽ
+        }
+        System.out.println(total);
+    }
+}
+【Itemクラス】
+public class Item {
+    String name;
+    int price = 100;
+}
+
+```
+
+- 配列インスタンスの生成・初期化と配列型変数の宣言と参照の代入
+  - newと初期化子の両方を使って配列のインスタンス生成と初期化を同時に行う場合、要素数は自動算出される為、**大かっこの中に要素数は指定できない**  
+```
+int[] array = {2,3};
+int[] array = new int[] {2,3};
+× int[] array = new int[2] {2,3}; // コンパイルエラー
+```
+
+
+- 第5章: 問9のトレース  
+```
+public interface A {}
+public abstract class B implement A {}
+public class C extends B {}
+public class D extends C {}
+
+public class Main {
+  public static void main(String[] args){
+    A[] array = {new C(), null, new D()};
+    Object[] objArray = array;
+  }
+}
+```
+<img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E7%AC%AC5%E7%AB%A0_%E5%95%8F9%E3%81%AEUML.jpg" alt="/第5章_問9のUML" title="/第5章_問9のUML">
+
