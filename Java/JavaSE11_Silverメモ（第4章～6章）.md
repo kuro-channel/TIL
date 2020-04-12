@@ -57,3 +57,45 @@ while(cnt++ <5)
   }
   // 0,1,2
   ```
+
+- 問9をトレースする
+  - 2次元配列ってどんな値の重合？（イメージ）  
+    - 1次元配列の集合体
+  ```
+  int array[][] = new int[][] {{1,2},{2,3,4}};
+  System.out.println(array[0][0]); // 1
+  System.out.println(array[0][1]); // 2
+  System.out.println(array[1][0]); // 2
+  System.out.println(array[1][1]); // 3
+  System.out.println(array[1][2]); // 4
+  ```
+ 
+ 【ポイント】**初期化処理は一回だけ！**
+  ```
+  public class Main {
+    public static void main(String[] args) throws Exception {
+       int array[][] = new int[][] {{1,2},{2,3,4}};
+       int total = 0;
+       
+       for(int i = 0; i < array.length; i++){
+           for(int j = i; j < array[i].length; j++){
+               total += array[i][j];
+           }
+       }
+       System.out.println(total);　// 10
+    }
+}
+  ```
+  
+  - 拡張for文
+    - 構文：「一時変数の宣言： コレクション/配列」　←　一時変数にはすでに宣言している変数と同じものはつけられない（コンパイルエラー）  
+    - 一時変数の参照を変更しても、集合には影響しない  
+    
+  - 後置インクリメントの実行タイミング:判定された後にインクリメントされる  
+  ```
+  int num = 10;
+  while(num++ <= 10) { // 条件式を判定した後に+1している
+    num++;
+  }
+  System.out.println(num); // 13
+  ```
