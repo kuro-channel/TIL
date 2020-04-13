@@ -194,3 +194,99 @@ public class Main {
 ```
 <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E7%AC%AC5%E7%AB%A0_%E5%95%8F9%E3%81%AEUML.jpg" alt="/第5章_問9のUML" title="/第5章_問9のUML">
 
+### 第6章：インスタンスとメソッド  
+- クラスとインスタンス
+  - クラスを定義し、クラスからインスタンスを生成して、インスタンスが動作することでプログラムを動作させる。  
+  - **クラス：HDD上に保存されている単なるファイル** / **JVMが必要なクラスファイルを探して、メモリに展開（コピー）する。**（=このコピーのことを「インスタンス」という）
+<img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%A8%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AE%E9%96%A2%E4%BF%82%E2%91%A0.jpg" alt="クラスとインスタンスの関係1" title="クラスとインスタンスの関係1">
+
+複数のインスタンスを作れば、複数のコピーを作ることになる。（インスタンスごとの値を持てるようになる）  
+<img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%A8%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E3%81%AE%E9%96%A2%E4%BF%82%E2%91%A1.jpg" alt="クラスとインスタンスの関係2" title="クラスとインスタンスの関係2">
+
+- 参照型変数がどのインスタンスの参照を持っているか？（問2)  
+```
+public class Item {
+    String name;
+    int price;
+    
+    public void printInfo(){
+        System.out.println(name + ", " + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Item a = new Item();
+       Item b = new Item();
+       a.name = "apple";
+       b.price = 100;
+       a.price = 200;
+       b.name = "banana";
+       a = b; // bの参照をaに代入：aとb同じ参照を持っていることになる。変数内の参照が変わった瞬間。
+       a.printInfo(); 
+    }
+}
+```
+
+- ガベージコレクション（GC）
+  - インスタンスはメモリ上に作られる為、無制限に作るとメモリ空間を使い切ってしまう。
+  - 限りあるメモリを有効に使う為にも、**利用していないインスタンスを削除し、空きスペースを作る必要がある**
+  - Java：自動メモリ管理機能がある。利用されなくなったインスタンスを解放する: **ガベージコレクタ**の仕事
+  - ガベージコレクションとは？： **ガベージコレクタが不要なインスタンスを探し、破棄すること**
+
+- ガベージコレクションの対象
+  - どこからも**参照されなくなったインスタンス**  
+  - インスタンスへの参照がなくなった時点で、ガベージコレクションの対象になる。  
+  ```
+  - nullを代入しインスタンスの参照を外す
+  Object obj = new Object();
+  obj = null;
+  
+  - 新しいインスタンスへの参照で変数を上書き
+  Object obj = new Object();
+  obj = new Object();
+  ```
+  
+- static領域とヒープ領域  
+  - staticで修飾されたフィールドやメソッドはインスタンスを作るための領域とは別の領域に配置されている  
+  - staticなメンバとそうでないメンバの分離はロード後すぐに行われる
+  - **staticなフィールドはインスタンスを作らなくても使える**　→　**staticなフィールドはインスタンスとは別の領域にある変数**
+<img src= "https://github.com/kuro-channel/TIL/blob/master/Java/static%E9%A0%98%E5%9F%9F%E3%81%A8%E3%83%92%E3%83%BC%E3%83%97%E9%A0%98%E5%9F%9F.jpg" alt="static領域とヒープ領域" title="static領域とヒープ領域">
+
+- staticなフィールドは、**「クラス名.フィールド名」**、もしくはインスタンス生成後であれば「参照.フィールド名」でもアクセスできる。  
+  - staticなメソッドも同様に**クラス名.メソッド名（引数）**
+  
+```
+設問5を例
+public class Sample {
+    static int num = 0;
+}
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Sample.num = 10; // staticなメンバを書き換え1回目
+       Sample s = new Sample();
+       Sample s2 = new Sample();
+       s.num += 10; // staticなメンバを書き換え2回目
+       s2.num = 30; // staticなメンバを書き換え3回目
+       System.out.println(Sample.num); // 30
+    }
+}
+```
+
+- シグニチャ：**メソッド名と引数のリスト**のセットのこと。
+- 可変長引数
+  - **引数の数を自由に変更できる引数**のこと。**引数の型の直後**に**ピリオド3つ（...）**をつけて宣言する  
+  - 異なる型はまとめられない
+  - **可変長引数以外の引数を受け取る必要がある**場合には、可変長引数を**最後**の引数にすること
+  
+  ```
+  - 可変長引数は配列として扱われている
+  void sample(int... num) {
+    for(int i = 0; i < num.length; i++) {
+      System.out.println(num[i]);
+    }
+  }
+ ```
+ 
+ 
