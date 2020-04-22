@@ -318,12 +318,90 @@ Sample.java:6: error: unreachable statement
 - コンストラクタと初期子化
   - クラスブロック直下にフィールドやメソッド、コンストラクタと並べて記述する。
   - 初期子化は「コンストラクタが実行する前」に実行される。  
-  - 初期化子を使えば、オーバーロードされた全てのコンストラクタで共通の前処理を宣言できる。  
+  - 初期化子を使えば、オーバーロードされた全てのコンストラクタで共通の前処理を宣言できる。
+  - オーバーロードされたコンストラクタから、別のコンストラクタを呼び出すには**this**を使う。  
+  - スーパークラスのコンストラクタを呼び出す時は、**super**を使う。
 
 ```
 public class Sample {
   {
     // 初期子化で行う共通処理
+  }
+}
+```
+
+- クラス変数、static初期化子
+  - クラス変数を初期化するためには、**static初期化子**を使う。
+  - staticなメンバはインスタンスごとに値を保持しない。よって、変更されれば変更される。  
+
+```
+public class Sample {
+  static int num; // 変更可能
+  static {
+    num = 10;
+  }
+  public Sample() {
+    num = 100;
+}
+```
+
+- カプセル化
+  - フィールドを非公開（private）にし、アクセスするためのメソッドを提供（public）する  
+  - ほかのクラスに定義されているメソッドからフィールドを守る為に、アクセス修飾子を使って不用意な利用を禁じる（=データ隠蔽）と一緒に使う
+
+- アクセス修飾子  
+
+|修飾子| 説明|
+| ---- | ---- |
+| public|全てのクラスからアクセス可能|
+| protected| 同じパッケージに属するか、継承しているサブクラスからのアクセスのみ可能|
+| デフォルト| 同じパッケージに属するクラスからのみアクセス可能|
+| private | クラス内からのみアクセス可能|
+
+
+- ***超重要！値渡しと参照渡し***
+  - 値渡し: プリミティブ型の値をメソッドに渡す時、その値はコピーされて渡される = 呼び出し元の値に影響なし・・・例1  
+  - 参照渡し: オブジェクト型の引数では、呼び出し元から呼び出し先のメソッドに参照値がコピーされて渡される=2つのメソッドから参照するインスタンスは同じ・・・例2  
+
+```
+例1:
+public class Sample {
+  int num;
+  public Sample(int num) {
+    this.num = num;
+  }
+}
+
+public class Main {
+  public static void main(String[] args){
+    Sample s = new sample(10);
+    modify(s.num); // コピーされて渡される
+    System.out.println(s.num); // 10
+  }
+  public static void modify(int num) {
+    num *= 2;
+  }
+}
+```
+
+
+```
+例2:
+public class Sample {
+  int num;
+  public Sample(int num) {
+    this.num = num;
+  }    
+}
+
+public class Main {
+  public static void main(String[] args){
+    Sample s = new sample();
+    modify(s.num); // 参照がコピーされて渡される
+    System.out.println(s.num); // 20
+  }
+  public static void modify(Sample s) {
+    s.num *= 2;
   }
 }
 ```
