@@ -255,7 +255,8 @@ public class Main {
 
 - staticなフィールドは、**「クラス名.フィールド名」**、もしくはインスタンス生成後であれば「参照.フィールド名」でもアクセスできる。  
   - staticなメソッドも同様に**クラス名.メソッド名（引数）**
-  
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/static%E3%81%AA%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E3%81%AE%E5%80%A4%E3%81%8C10%E3%81%AB%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%82%8F%E3%81%A3%E3%81%9F%E7%8A%B6%E6%85%8B.jpg" alt="staticなフィールドの値が10に置き換わった状態" title="staticなフィールドの値が10に置き換わった状態">
+
 ```
 設問5を例
 public class Sample {
@@ -273,6 +274,9 @@ public class Main {
     }
 }
 ```
+- staticなメソッドから、staticではないメンバにはアクセスできない
+  - インスタンスがなくても使えるstaticメソッドから、staticではないメンバ（=インスタンス化しないとアクセスできない）にはアクセスできない  
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/static%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89_static.%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%83%A1%E3%83%B3%E3%83%90%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9.jpg" alt="staticメソッド_static.ではないメンバへのアクセス" title="staticメソッド_static.ではないメンバへのアクセス">
 
 - シグニチャ：**メソッド名と引数のリスト**のセットのこと。
   - シグニチャの違いが**オーバーロードの必須条件**：オーバーロードの条件は、シグニチャが異なること。
@@ -313,7 +317,7 @@ Sample.java:6: error: unreachable statement
   - 戻り値型は記述できない
   - newと一緒にしか使えない（=インスタンス生成時しか呼び出しできない）
   - **どんなアクセス修飾子**でも定義できる。 public / private：非公開なコンストラクタを定義 / protected
-  - public:どのクラスからでもインスタンス化可能 / protected,デフォルト: 継承関係にあるサブクラスやパッケージ内からOK
+  - public:どのクラスからでもインスタンス化可能 / protectedとデフォルト: 継承関係にあるサブクラスやパッケージ内からOK
   
 - コンストラクタと初期子化
   - クラスブロック直下にフィールドやメソッド、コンストラクタと並べて記述する。
@@ -360,8 +364,11 @@ public class Sample {
 
 
 - ***超重要！値渡しと参照渡し***
-  - 値渡し: プリミティブ型の値をメソッドに渡す時、その値はコピーされて渡される = 呼び出し元の値に影響なし・・・例1  
+  - 値渡し: プリミティブ型の値をメソッドに渡す時、その値はコピーされて渡される = 呼び出し元の値に影響なし・・・例1
   - 参照渡し: オブジェクト型の引数では、呼び出し元から呼び出し先のメソッドに参照値がコピーされて渡される=2つのメソッドから参照するインスタンスは同じ・・・例2  
+
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E5%80%A4%E6%B8%A1%E3%81%97.JPG" alt="値渡し" title="値渡し">
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E5%8F%82%E7%85%A7%E6%B8%A1%E3%81%97.JPG" alt="参照渡し" title="参照渡し">
 
 ```
 例1:
