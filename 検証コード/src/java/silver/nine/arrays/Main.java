@@ -1,6 +1,7 @@
 package java.silver.nine.arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
@@ -43,5 +44,14 @@ public class Main {
             System.out.println(item.getName()); // B,C,A
         }
 
+        // 第9章 問15
+        String[] a = {"b", "c"};
+        String[] b = {"a", "b", "c"};
+        System.out.println(Arrays.mismatch(a,b)); // 0 : 0番目の値同士が一致していない
+
+        // 第9章 問16
+        String[] c = {"B", "A"};
+        String[] d = {"A", "B"};
+        System.out.println(Arrays.compare(c,d)); // 1 :
     }
 }
