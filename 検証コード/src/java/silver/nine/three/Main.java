@@ -16,11 +16,11 @@ public class Main {
         list2.sort((a,b) -> -a.compareTo(b));
 
         for(Integer num: list1){
-            System.out.println(num);
+            System.out.println(num); // 1,2,3
         }
 
         for(Integer num: list2){
-            System.out.println(num);
+            System.out.println(num); // 3,2,1
         }
 
     }
