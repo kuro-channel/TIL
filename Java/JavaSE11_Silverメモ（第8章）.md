@@ -9,8 +9,9 @@ interface Greet {
 }
 ```
 
-- ラムダ式文法
+- ラムダ式
   - (引数) -> { 処理; }
+  ‐　ラムダ式外で宣言されたローカル変数にラムダ式内からアクセスするには、実質的にfinalな変数（変更されない変数）でなくてはいけない
   
 ```
 // (1) 引数と戻り値がある場合
@@ -39,4 +40,7 @@ interface Greet {
 | Function<T,R> |R apply(T)| 引数を受け取って、指定された型(R)の結果を戻す「処理」|
 
 - 参考文献リスト
-  
+  - 関数型インターフェース http://www.ne.jp/asahi/hishidama/home/tech/java/functionalinterface.html　
+  - ラムダ式 http://www.ne.jp/asahi/hishidama/home/tech/java/lambda.html
+
+
