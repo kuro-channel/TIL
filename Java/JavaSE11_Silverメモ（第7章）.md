@@ -66,14 +66,126 @@ class Employee {
   public void work() {
     System.out.println("work");
   }
+}
 
 class Engineer extends Employee implements Worker {}
 
 public class Main {
   public static void main(String[] args){
     Worker worker = new Enginineer();
-    worker.work();
+    worker.work(); // EngineerクラスはEmployeeクラスの特徴を引き継いでいる = workメソッドを持っている　結果："work"と表示される
   }
 }
 ```
   <img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%AC%AC7%E7%AB%A0_%E5%95%8F13%E5%BE%A9%E7%BF%92.jpg" alt="第7章 問13復習" title="第7章 問13復習">
+  
+- 第7章 問14復習
+  - ポリモーフィズムの注意点
+  - 1. 継承関係や実現関係があり、ポリモーフィズムが成り立つ条件を備えているかどうか
+  - 2. インスタンスを扱っている「型」に、呼び出しているメソッドが定義されているかどうか
+  - **扱っている型で定義されているもの以外は使えない**：変数が何型かを意識する
+
+```
+public interface Worker {
+  void work();
+}
+
+class Employee implements Worker {
+  public void work() {
+    System.out.println("work");
+  }   
+  public void report() {
+    System.out.println("report");
+  }
+}
+
+class Engineer extends Employee {
+  public void create() {
+    System.out.println("create future");
+  }
+}
+
+public class Main {
+  public static void main(String[] args){
+    Worker a = new Enginner(); 
+    Employee b = new Engineer(); 
+    Engineer c = new Engineer();
+    a.create(); // worker型には"create"メソッドは定義されていない：コンパイルエラー
+    b.work(); // Employee型は"work"メソッドの定義を持っている
+    c.report(); // Engineer型は"report"メソッドの定義を持っている（Employeeクラスから引き継いでいる）
+  }
+}
+```
+  <img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%AC%AC7%E7%AB%A0_%E5%95%8F14%E5%BE%A9%E7%BF%92.jpg" alt="第7章 問14復習" title="第7章 問14復習">
+
+- 第7章 問15復習
+  - ポリモーフィズムが成り立つかどうか
+  - ポリモーフィズムとは：**実際に動作しているインスタンスを、インスタンスの元になった型とは「異なる型」で扱える仕組み**
+  - 継承の関係 or 実現の関係があれば、ポリモーフィズムは成立する
+  - インターフェースはインスタンス化できない
+
+```
+public interface A {}
+public class B implements A {}
+public class C extends B {}
+public class D {}
+
+public class Main {
+  public static void main(String[] args){
+    A[] array = {
+      new B(),
+      new C(), 
+      new A(), // コンパイルエラー
+      new D() // コンパイルエラー
+      };
+   }
+  }
+}
+```
+  <img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%AC%AC7%E7%AB%A0_%E5%95%8F15%E5%BE%A9%E7%BF%92.jpg" alt="第7章 問15復習" title="第7章 問15復習">
+  
+- 型変換：アップキャストとダウンキャスト
+  - 継承関係にある場合、サブクラスのインスタンスをスーパークラス型の変数で扱うことができる
+  - サブクラスをスーパークラス型に変換する：**アップキャスト** 
+  - スーパークラス型で扱っていたインスタンスを、元の型に戻す：**ダウンキャスト**
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E3%82%A2%E3%83%83%E3%83%97%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88_%E3%83%80%E3%82%A6%E3%83%B3%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%88.jpg" alt="型変換" title="型変換">
+
+```
+A a = new B(); // Aを継承したB：BのインスタンスをA型として扱う
+B b = a; // コンパイルエラー
+B b = (B) a; // キャスト式でダウンキャスト
+```
+
+- 第7章 問20復習
+  - 継承関係にあるクラスのインスタンスを作成したときのコンストラクタ
+  - 継承関係にあるクラスのインスタンスは、**スーパークラスと差分のインスタンス**で構成されている
+  - スーパークラスのインスタンスが持つコンストラクタが先に実行されなければならない
+  - サブクラスのコンストラクタには、スーパークラスのコンストラクタを呼び出す**「super();」**が、コンパイラによって先頭行に追加される
+  - コンストラクタ内から、オーバーロードされた別のコンストラクタを呼び出す際は、**「this」**を使う。
+  
+```
+class A {
+  public A() {
+    System.out.println("A");
+  }
+  public A(String val) {
+    this();
+    System.out.println(val);
+  }
+}
+
+class B extends A {
+  public B() {
+    super(); // コンパイラによって自動で追加される
+    System.out.println("B");
+  }
+}
+
+public class Main {
+  public static void main(String[] args){
+    A a = new B();
+  }
+}
+```
+
+
