@@ -6,9 +6,12 @@
 ※ パッケージ名に「**ドメインを逆にした文字列**」を使うのは**慣習**（決まりではない）  
 **クラスは必ず何らかのパッケージに属する。**（パッケージ宣言がない場合は、「無名パッケージ」に属する）
 
+- パッケージの指定
+  - java.langパッケージに属するクラスは、インポートする必要なし
+  - com.* : comパッケージに属するクラスだけインポートされる
+
 - エントリーポイント  
 処理を始めるためのメソッド。JVMは、Javaコマンドで指定されたクラスを読み込み、そのクラスに定義されているエントリーポイントから処理を始める。  
-
 ```
 // Mainメソッド
 public static void main(String[] args) {
@@ -20,7 +23,9 @@ public static void main(String[] args) {
 1. mainメソッドを持つクラスファイル  
 2. jarファイル内のメインクラス  
 3. モジュールに含まれるメインクラス  
-4. javacコマンドでコンパイルせずに、ソースファイルを直接実行できる（ソースファイルモード）
+4. javacコマンドでコンパイルせずに、ソースファイルを直接実行できる（ソースファイルモード）  
+※ javaコマンドは、**.javaファイルを直接実行できる**　⇔　コンパイル：javacコマンド  
+
 
 - 起動パラメータの指定
 1. スペースが区切り記号として扱われる  
@@ -215,21 +220,3 @@ System.out.println(str1.intern() == str2.intern()); // 同一性：true、intern
   
  ※ **変数は、case値として使用できない。**
 
-- switch文の「default」
-  - caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（**フォールスルー**）
-```
-public class Main {
-
-    public static void main(String[] args) {
-        // 第12章 問7
-        int data = 1;
-        switch (data) {
-            default: System.out.println("C"); // フォールスルー
-            case 0: System.out.println("A");　// CA
-                    break;
-            case 10: System.out.println("B");
-                    break;
-        }
-    }
-}
-```
