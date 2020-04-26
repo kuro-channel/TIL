@@ -42,7 +42,7 @@ https://github.com/kuro-channel/TIL/blob/master/%E6%A4%9C%E8%A8%BC%E3%82%B3%E3%8
   list.add("test"); // String 
   list.add(new Integer(10)); // Integer
   ```
-  ```
+  
 - ジェネリクス
   - **型を指定することで、コレクションが扱える型を制限する機能**
  ```
