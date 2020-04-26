@@ -11,6 +11,8 @@ JavaScript第二期 開始前アンケート
   - 演算: データの演算、計算処理を行う。CPU（Central Processing Unit）がその枠割を担う。（中央演算装置）四則演算や論理演算などを処理する演算論理装置(ALU): 演算ユニットを指す。
   - 制御: 演算と同様にCPUが担っている。コンピューターに対して動作すべきタイミングを指示してくれる装置。各機能の制御役。
   - 出力: ディスプレイやスピーカー、プリンターのようにパソコンで処理した結果を出してくれる装置。
+  
+<img src="https://github.com/kuro-channel/TIL/blob/master/Javascript/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AE5%E5%A4%A7%E8%A6%81%E7%B4%A0.png" alt="コンピュータの5大要素" title="コンピュータの5大要素">
 
 ### 二進法について 
 https://mathtrain.jp/binary
