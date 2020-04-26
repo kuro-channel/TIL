@@ -413,3 +413,15 @@ public class Main {
 }
 ```
 
+- ローカル変数とインスタンス変数・クラス変数
+  - **インスタンス変数やクラス変数と同名のローカル変数は定義できる**
+
+```
+public class Sample {
+	// 総仕上げ問題➀ 5問
+	static int num = 23;
+	public void sample(){
+		int num = this.num; // クラス変数を使うことを明示
+	}
+}
+```
