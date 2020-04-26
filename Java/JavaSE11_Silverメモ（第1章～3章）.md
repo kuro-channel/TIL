@@ -215,3 +215,21 @@ System.out.println(str1.intern() == str2.intern()); // 同一性：true、intern
   
  ※ **変数は、case値として使用できない。**
 
+- switch文の「default」
+  - caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（**フォールスルー**）
+```
+public class Main {
+
+    public static void main(String[] args) {
+        // 第12章 問7
+        int data = 1;
+        switch (data) {
+            default: System.out.println("C"); // フォールスルー
+            case 0: System.out.println("A");　// CA
+                    break;
+            case 10: System.out.println("B");
+                    break;
+        }
+    }
+}
+```
