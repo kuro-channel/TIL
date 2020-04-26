@@ -1,4 +1,4 @@
-package java.silver.nine.arrays;
+package jv.silver.nine.arrays;
 
 // 第9章 問11
 public class Item {

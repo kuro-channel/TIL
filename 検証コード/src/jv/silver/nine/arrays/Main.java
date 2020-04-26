@@ -1,4 +1,4 @@
-package java.silver.nine.arrays;
+package jv.silver.nine.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package java.silver.nine.two;
+package jv.silver.nine.two;
 
 public class Sample{
 	private int id;
