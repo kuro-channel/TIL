@@ -192,21 +192,49 @@ public class Main {
 - 第12章総仕上げ問題 問10復習
   - 大前提：継承関係にあるクラスのインスタンスは、**スーパークラスと差分のインスタンス**で構成されている
 <img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%B7%8F%E4%BB%95%E4%B8%8A%E2%91%A0-%E5%95%8F10.jpg" alt="第12章総仕上げ問題 問10" title="第12章総仕上げ問題 問10">
+
 ```
 public interface A {
 	abstract void x();
 }
-
 public abstract class B {
 	public void x(){};
 	public abstract void z();
 }
-
 public class C extends B implements A {
 
 	@Override
 	public void z() {
 
 	}
+}
+```
+
+- 第12章総仕上げ問題 問24復習
+  - インターフェースの多重実現をした結果、デフォルトメソッドが重複してしまう問題：**菱形継承問題**
+  - 参考：https://www.zunouissiki.com/entry/2018/11/04/191704
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%B7%8F%E4%BB%95%E4%B8%8A%E3%81%92%E5%95%8F%E9%A1%8C%E2%91%A0-24.jpg" alt="第12章総仕上げ問題 問24" title="第12章総仕上げ問題 問24">
+
+```
+public interface A {
+    void sample();
+}
+public interface B extends A {
+    default void sample() {
+    	System.out.println("B");
+    }
+}
+public interface C extends A {
+    @Override
+    default void sample() {
+    	System.out.println("C");
+    }
+}
+public class D implements B, C {
+    @Override
+    public void sample() {
+    	super.sample(); // コンパイルエラー
+	B.super.sample(); // どちらのdefaultメソッドを使うか明示すればOK
+    }
 }
 ```
