@@ -24,8 +24,13 @@ public static void main(String[] args) {
 2. jarファイル内のメインクラス  
 3. モジュールに含まれるメインクラス  
 4. javacコマンドでコンパイルせずに、ソースファイルを直接実行できる（ソースファイルモード）  
-※ javaコマンドは、**.javaファイルを直接実行できる**　⇔　コンパイル：javacコマンド  
+※ javaコマンドは、**.javaファイルを直接実行できる**　⇔　コンパイル：javacコマンド 
 
+- コンパイル → 実行するコマンド
+```
+javac -d build ~.java
+java -cp build ~.Main
+```
 
 - 起動パラメータの指定
 1. スペースが区切り記号として扱われる  
@@ -88,6 +93,14 @@ String str = "abcde";
 System.out.println(str.indexOf('c')); // 2
 System.out.println(str.indexOf("cd")); // 2
 System.out.println(str.indexOf("abcdef")); // -1
+```
+```
+// 第12章 問12
+String str = "abcd ef gh";
+int x = str.indexOf("ef");
+str.substring(x + 3); // x: 5 実行して受け取る変数がない！！strは変わらない。
+x = str.indexOf("ef");
+System.out.println(str + " " + x); // abcd ef gh 5
 ```
 - concatメソッド：インスタンスが保持する文字列を、引数として渡された文字列と連結し、新しい文字列を戻す。（＋演算子と一緒）  
 ※ **appendは「StringBuilderクラスのメソッド」**  
@@ -235,6 +248,22 @@ public class Main {
             case 10: System.out.println("B");
                     break;
         }
+    }
+}
+```
+
+```
+// 第12章 問13
+
+public class Main {
+    static String str; // 初期化してない！
+    public void main(String[] args) {
+        switch (str) { // ヌルポでおちる！
+            case "10": str += "10";
+            default: str += "def";
+            case "20": str += "20";
+        }
+        System.out.println(this.str);
     }
 }
 ```
