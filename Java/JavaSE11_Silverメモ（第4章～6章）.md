@@ -130,9 +130,11 @@ while(cnt++ <5)
     ```
   <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E9%85%8D%E5%88%97%E5%9E%8B%E5%A4%89%E6%95%B0%E3%81%A8%E9%85%8D%E5%88%97.jpg" alt="配列型変数と配列" title="配列型変数と配列">
   
-  - 2次元配列のインスタンス  
+- 2次元配列のインスタンス
+　　- 多次元配列のインスタンス：1次元目の要素数は必ず指定しないとダメ！
   ```
   int[][] array = new int[3][3];
+  int[][] array = new int[3][]; // これはOK！
   ```
 <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E5%A4%9A%E6%AC%A1%E5%85%83%E9%85%8D%E5%88%97%E3%81%A8%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0.jpg" alt="多次元配列と配列の要素数" title="多次元配列と配列の要素数">
 
