@@ -267,3 +267,7 @@ public class Main {
     }
 }
 ```
+
+- 数値リテラルのデフォルト型
+  - 整数：int型、浮動小数点数：double型
+  
