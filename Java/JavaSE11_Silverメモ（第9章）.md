@@ -81,6 +81,8 @@ list.set(0,"B");
 https://github.com/kuro-channel/TIL/tree/master/%E6%A4%9C%E8%A8%BC%E3%82%B3%E3%83%BC%E3%83%89/src/java/silver/nine/arrays
 
 - 固定長リスト
+  - 変更できないコレクションを生成する：変更しようとすると例外が発生する
+  
 ```
 【asListメソッド】配列からリストのインスタンスを生成する
 var list = Arrays.asList(new Integer[] {1,2,3});
