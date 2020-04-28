@@ -228,6 +228,7 @@ public class Main {
 ・nullが渡された時は、常にfalseを返す  
 
 - コンスタントプール：**コード中に同じ文字列リテラルが登場した場合、同じStringインスタンスへの参照が使い回される**  
+ - 注意：**newを使ってStringのインスタンスを明示的に記述した場合は、新しいString型オブジェクトが生成される**
 ```
 String a = "sample";
 String b = "sample";
@@ -239,6 +240,16 @@ System.out.println(a == b); // 同一性：true
 String str1 = new String("def");
 String str2 = new String("def");
 System.out.println(str1.intern() == str2.intern()); // 同一性：true、internなしだとfalse
+```
+
+- 12章 問61復習
+```
+String s1 = new String("Java");
+String s2 = "Java";
+String s3 = s2.intern();
+System.out.println(s1 == s2); // 別々のインスタンス false
+System.out.println(s2 == s3); // 同一のインスタンス true
+System.out.println(s1 == s3); // false
 ```
 
 - switch文  
