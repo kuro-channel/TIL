@@ -238,3 +238,20 @@ public class D implements B, C {
     }
 }
 ```
+
+- 第12章総仕上げ問題 問26復習
+  - **ポリモーフィズム：下位に属するクラスが上位に位置する型で扱える**
+  <img src="https://github.com/kuro-channel/TIL/blob/master/Java/12%E7%AB%A0%E5%95%8F26%E5%BE%A9%E7%BF%92.jpg" alt="第12章総仕上げ問題 問26" title="第12章総仕上げ問題 問26">
+```
+public abstract A {
+}
+public interface B {
+}
+public class C extends A implements B {
+}
+public class D extends C {
+}
+
+List<D> listD = new ArrayList<>();
+listD.add(new C()); × // コンパイルエラー
+```
