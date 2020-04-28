@@ -234,7 +234,7 @@ System.out.println(str1.intern() == str2.intern()); // 同一性：true、intern
  ※ **変数は、case値として使用できない。**
 
 - switch文の「default」
-  - caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（フォールスルー）  
+  - **caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（フォールスルー）**  
 ```
 public class Main {
 
@@ -264,6 +264,34 @@ public class Main {
             case "20": str += "20";
         }
         System.out.println(this.str);
+    }
+}
+```
+```
+// 第12章 問34
+
+public class Main {
+    static String str; // 初期化してない！
+    public void main(String[] args){ 
+      char c = 'b';
+      int i = 0;
+      switch(c) {
+        case 'a':
+          i++;
+          break;
+        case 'b':
+          i++; // breakがないので、次のcase文を実行
+        case 'c':
+          i++;
+        case 'd':
+          i++;
+        case 'e':
+          i++;
+          break;
+        default:
+           System.out.println(c);
+      }
+      System.out.println(i); // 3 : caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（フォールスルー）
     }
 }
 ```
