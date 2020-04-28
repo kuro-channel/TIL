@@ -6,9 +6,12 @@
 ※ パッケージ名に「**ドメインを逆にした文字列**」を使うのは**慣習**（決まりではない）  
 **クラスは必ず何らかのパッケージに属する。**（パッケージ宣言がない場合は、「無名パッケージ」に属する）
 
+- パッケージの指定
+  - java.langパッケージに属するクラスは、インポートする必要なし
+  - com.* : **comパッケージに属するクラスだけインポートされる**
+
 - エントリーポイント  
 処理を始めるためのメソッド。JVMは、Javaコマンドで指定されたクラスを読み込み、そのクラスに定義されているエントリーポイントから処理を始める。  
-
 ```
 // Mainメソッド
 public static void main(String[] args) {
@@ -20,7 +23,14 @@ public static void main(String[] args) {
 1. mainメソッドを持つクラスファイル  
 2. jarファイル内のメインクラス  
 3. モジュールに含まれるメインクラス  
-4. javacコマンドでコンパイルせずに、ソースファイルを直接実行できる（ソースファイルモード）
+4. javacコマンドでコンパイルせずに、ソースファイルを直接実行できる（ソースファイルモード）  
+※ javaコマンドは、**.javaファイルを直接実行できる**　⇔　コンパイル：javacコマンド 
+
+- コンパイル → 実行するコマンド
+```
+javac -d build ~.java
+java -cp build ~.Main
+```
 
 - 起動パラメータの指定
 1. スペースが区切り記号として扱われる  
@@ -83,6 +93,14 @@ String str = "abcde";
 System.out.println(str.indexOf('c')); // 2
 System.out.println(str.indexOf("cd")); // 2
 System.out.println(str.indexOf("abcdef")); // -1
+```
+```
+// 第12章 問12
+String str = "abcd ef gh";
+int x = str.indexOf("ef");
+str.substring(x + 3); // x: 5 実行して受け取る変数がない！！strは変わらない。
+x = str.indexOf("ef");
+System.out.println(str + " " + x); // abcd ef gh 5
 ```
 - concatメソッド：インスタンスが保持する文字列を、引数として渡された文字列と連結し、新しい文字列を戻す。（＋演算子と一緒）  
 ※ **appendは「StringBuilderクラスのメソッド」**  
@@ -215,3 +233,69 @@ System.out.println(str1.intern() == str2.intern()); // 同一性：true、intern
   
  ※ **変数は、case値として使用できない。**
 
+- switch文の「default」
+  - **caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（フォールスルー）**  
+```
+public class Main {
+
+    public static void main(String[] args) {
+        // 第12章 問7
+        int data = 1;
+        switch (data) {
+            default: System.out.println("C"); // フォールスルー
+            case 0: System.out.println("A");　// CA
+                    break;
+            case 10: System.out.println("B");
+                    break;
+        }
+    }
+}
+```
+
+```
+// 第12章 問13
+
+public class Main {
+    static String str; // 初期化してない！
+    public void main(String[] args) {
+        switch (str) { // ヌルポでおちる！
+            case "10": str += "10";
+            default: str += "def";
+            case "20": str += "20";
+        }
+        System.out.println(this.str);
+    }
+}
+```
+```
+// 第12章 問34
+
+public class Main {
+    static String str; // 初期化してない！
+    public void main(String[] args){ 
+      char c = 'b';
+      int i = 0;
+      switch(c) {
+        case 'a':
+          i++;
+          break;
+        case 'b':
+          i++; // breakがないので、次のcase文を実行
+        case 'c':
+          i++;
+        case 'd':
+          i++;
+        case 'e':
+          i++;
+          break;
+        default:
+           System.out.println(c);
+      }
+      System.out.println(i); // 3 : caseやdefault内にbreakキーワードが見つからない場合、見つかるまでcase内の文を実行し続ける（フォールスルー）
+    }
+}
+```
+
+- 数値リテラルのデフォルト型
+  - 整数：int型、浮動小数点数：double型
+  

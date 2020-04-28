@@ -11,8 +11,21 @@ interface Greet {
 
 - ラムダ式
   - (引数) -> { 処理; }
-  ‐　ラムダ式外で宣言されたローカル変数にラムダ式内からアクセスするには、実質的にfinalな変数（変更されない変数）でなくてはいけない
-  
+  ‐　ラムダ式外で宣言されたローカル変数にラムダ式内からアクセスするには、**実質的にfinalな変数（変更されない変数）でなくてはいけない**
+
+```
+import java.util.function.Supplier;
+
+public class Sample {
+	// 総仕上げ問題➀ 4問
+	public void sample(){
+		int i = 0;
+		Supplier<Integer> foo = () -> i;
+		i++;　// java: ラムダ式から参照されるローカル変数は、finalまたは事実上のfinalである必要があります
+		System.out.println(foo.get());
+	}
+}
+```
 ```
 // (1) 引数と戻り値がある場合
 (Integer number) -> {

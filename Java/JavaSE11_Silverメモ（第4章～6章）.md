@@ -130,9 +130,11 @@ while(cnt++ <5)
     ```
   <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E9%85%8D%E5%88%97%E5%9E%8B%E5%A4%89%E6%95%B0%E3%81%A8%E9%85%8D%E5%88%97.jpg" alt="配列型変数と配列" title="配列型変数と配列">
   
-  - 2次元配列のインスタンス  
+- 2次元配列のインスタンス
+　　- 多次元配列のインスタンス：1次元目の要素数は必ず指定しないとダメ！
   ```
   int[][] array = new int[3][3];
+  int[][] array = new int[3][]; // これはOK！
   ```
 <img src= "https://github.com/kuro-channel/TIL/blob/master/Java/%E5%A4%9A%E6%AC%A1%E5%85%83%E9%85%8D%E5%88%97%E3%81%A8%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E6%95%B0.jpg" alt="多次元配列と配列の要素数" title="多次元配列と配列の要素数">
 
@@ -413,3 +415,15 @@ public class Main {
 }
 ```
 
+- ローカル変数とインスタンス変数・クラス変数
+  - **インスタンス変数やクラス変数と同名のローカル変数は定義できる**
+
+```
+public class Sample {
+	// 総仕上げ問題➀ 5問
+	static int num = 23;
+	public void sample(){
+		int num = this.num; // クラス変数を使うことを明示
+	}
+}
+```

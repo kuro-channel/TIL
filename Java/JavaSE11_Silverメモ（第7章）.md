@@ -10,7 +10,9 @@ alt="継承のイメージ" title="継承のイメージ">
   - **型 = 「そのものの"扱い方"を決めるための情報。変数を宣言する際、変数の扱い方を決める」**
   - **ポリモーフィズムの実現**：<a href="https://github.com/kuro-channel/TIL/blob/master/Java/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.md">以前まとめたものを確認しよう</a>
   - 抽象メソッドの定義が可能。インターフェースを実装したクラスは、必ず抽象メソッドを実装しなければならない（コンパイルエラーになる）
-  - finalを使って、動的に値が変更されないこと（定数）/ staticを使って、インスタンスが生成できなくても使えること
+  - 抽象メソッド： **オーバーライドされることを前提としている。** インターフェースや、抽象クラスで定義した抽象メソッドを、サブクラスでオーバーライドされることを前提としている。
+  - **finalを使って、動的に値が変更されないこと（定数）** : 変更されることが前提
+  - staticを使って、インスタンスが生成できなくても使えること
   - インターフェースはインスタンス化できない為、動的に変更する値は定義できない  
   - インターフェースは多重継承可能（extends）
 
@@ -36,7 +38,7 @@ alt="継承のイメージ" title="継承のイメージ">
   - 実装を持つ具象メソッドと、実装を持たない抽象メソッドの両方を持つことができる。
   - インスタンス化できない（インターフェースの特徴）
   - 抽象クラスを継承したサブクラスのインスタンスは、抽象クラスのインスタンスが含まれる（画像参照）
-
+  
 ```
 public abstract class AbstractSample {
   // 具象メソッド（抽象クラスを継承したサブクラスが引き継ぐ）
@@ -48,6 +50,16 @@ public abstract class AbstractSample {
 }
 ```
 <img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%A8%E5%B7%AE%E5%88%86%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9.jpg" alt="スーパークラスと差分のインスタンス" title="スーパークラスと差分のインスタンス">
+
+- 抽象メソッドのルール
+  - **abstract**で修飾すること
+  - 実装は持つことができない
+```
+abstract class Item {
+    public abstract int calcPrice(Item item);
+    public void print(Item item){ // do something }
+}
+```
 
 - オーバーライド
   - サブクラスでスーパークラスに定義されたメソッドを「**再定義**」すること  
@@ -160,8 +172,8 @@ B b = (B) a; // キャスト式でダウンキャスト
   - 継承関係にあるクラスのインスタンスを作成したときのコンストラクタ
   - 継承関係にあるクラスのインスタンスは、**スーパークラスと差分のインスタンス**で構成されている
   - スーパークラスのインスタンスが持つコンストラクタが先に実行されなければならない
-  - サブクラスのコンストラクタには、スーパークラスのコンストラクタを呼び出す**「super();」**が、コンパイラによって先頭行に追加される
-  - コンストラクタ内から、オーバーロードされた別のコンストラクタを呼び出す際は、**「this」**を使う。
+  - サブクラスのコンストラクタには、スーパークラスのコンストラクタを呼び出す**super**:super()が、コンパイラによって先頭行に追加される
+  - コンストラクタ内から、オーバーロードされた別のコンストラクタを呼び出す際は、**this**:this()を使う。
   
 ```
 class A {
@@ -188,4 +200,69 @@ public class Main {
 }
 ```
 
+- 第12章総仕上げ問題 問10復習
+  - 大前提：継承関係にあるクラスのインスタンスは、**スーパークラスと差分のインスタンス**で構成されている
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%B7%8F%E4%BB%95%E4%B8%8A%E2%91%A0-%E5%95%8F10.jpg" alt="第12章総仕上げ問題 問10" title="第12章総仕上げ問題 問10">
 
+```
+public interface A {
+	abstract void x();
+}
+public abstract class B {
+	public void x(){};
+	public abstract void z();
+}
+public class C extends B implements A {
+
+	@Override
+	public void z() {
+
+	}
+}
+```
+
+- 第12章総仕上げ問題 問24復習
+  - インターフェースの多重実現をした結果、デフォルトメソッドが重複してしまう問題：**菱形継承問題**
+  - 参考：https://www.zunouissiki.com/entry/2018/11/04/191704
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E7%B7%8F%E4%BB%95%E4%B8%8A%E3%81%92%E5%95%8F%E9%A1%8C%E2%91%A0-24.jpg" alt="第12章総仕上げ問題 問24" title="第12章総仕上げ問題 問24">
+
+```
+public interface A {
+    void sample();
+}
+public interface B extends A {
+    default void sample() {
+    	System.out.println("B");
+    }
+}
+public interface C extends A {
+    @Override
+    default void sample() {
+    	System.out.println("C");
+    }
+}
+public class D implements B, C {
+    @Override
+    public void sample() {
+    	super.sample(); // コンパイルエラー
+	B.super.sample(); // どちらのdefaultメソッドを使うか明示すればOK
+    }
+}
+```
+
+- 第12章総仕上げ問題 問26復習
+  - **ポリモーフィズム：下位に属するクラスが上位に位置する型で扱える**
+  <img src="https://github.com/kuro-channel/TIL/blob/master/Java/12%E7%AB%A0%E5%95%8F26%E5%BE%A9%E7%BF%92.jpg" alt="第12章総仕上げ問題 問26" title="第12章総仕上げ問題 問26">
+```
+public abstract A {
+}
+public interface B {
+}
+public class C extends A implements B {
+}
+public class D extends C {
+}
+
+List<D> listD = new ArrayList<>();
+listD.add(new C()); × // コンパイルエラー
+```
