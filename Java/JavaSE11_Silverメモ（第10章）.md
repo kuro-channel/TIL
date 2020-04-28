@@ -2,6 +2,7 @@
 - try ~ catch ~ finally文：finallyは例外発生の有無にかかわらず実行される！
   - **try ~ catch ~ finallyの順番は変更できない**
   - catchブロックは複数記述できるが、**tryブロックとfinallyブロックは1つずつしか定義できない**
+  - 到達不可能なコードを書くと、コンパイルエラーになる
 
 ```
   try {
