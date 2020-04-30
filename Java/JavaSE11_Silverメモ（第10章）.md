@@ -25,3 +25,8 @@ https://github.com/kuro-channel/TIL/blob/master/%E6%A4%9C%E8%A8%BC%E3%82%B3%E3%8
   - ArrayIndexOutOfBoundsException：配列の要素外アクセスを示す
   - indexOutOfBoundsException:配列や文字列、コレクションの範囲外であることを示す
 
+- 検査例外と非検査例外
+  - Exceptionのサブクラスは、RUntimeExceptionとそのサブクラスを除いて、**全て検査例外**
+  - 検査例外：**try-catchしている**　or **throws句で宣言しているか** のどちらか
+  - 非検査例外: try-catchを強制されない。throws句で宣言しなくても問題なし
+<img src="https://github.com/kuro-channel/TIL/blob/master/Java/%E4%BE%8B%E5%A4%96%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AE%E9%96%A2%E4%BF%82.jpg" alt="例外クラスの関係" title="例外クラスの関係">
