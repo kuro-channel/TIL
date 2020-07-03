@@ -7,9 +7,10 @@ Route53 / CloudWatch / IAM / CloudTrail
 - ネームサーバーとしてAWSの**Route53**を使う
 - AWSマネージドコンソール（ダッシュボード）
 - **CloudWatch**で請求アラートの設定 ：モニタリングサービス
+  - AWSは従量課金制！気づいた時に使いすぎた・・・とならないように、アラートの設定をしておこう。
 - **IAM**でユーザーの権限管理 ルートユーザの普段使いはダメ！  
-  IAMユーザーを作成しよう。 1) グループの作成 2) ユーザーの作成  
-  **IAM:Identity and Access Manegement** AWSの利用者を管理するためのサービス
+  - IAMユーザーを作成しよう。 1) グループの作成 2) ユーザーの作成  
+  - **IAM:Identity and Access Manegement** AWSの利用者を管理するためのサービス
   >https://aws.amazon.com/jp/iam/
   >
 - (MFA：多要素認証で不正利用からIAMユーザーを守る）→今回はやってない！
