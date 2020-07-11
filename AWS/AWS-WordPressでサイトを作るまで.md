@@ -2,19 +2,31 @@
 ## 0.初期準備
 **＜関連サービス＞**
 Route53 / CloudWatch / IAM / CloudTrail
+
+### AWSアカウントの作成
 - AWS無料枠でAWSアカウントを作成する。 https://aws.amazon.com/jp/free/  
 ※ AWSアカウント作成には、「クレジットカード」と「スマートフォン」が必要。 
+
+### Route53
 - ネームサーバーとしてAWSの**Route53**を使う
 - AWSマネージドコンソール（ダッシュボード）
+
+### CloudWatch
 - **CloudWatch**で請求アラートの設定 ：モニタリングサービス
   - AWSは従量課金制！気づいた時に使いすぎた・・・とならないように、アラートの設定をしておこう。
+
+### IAM
 - **IAM**でユーザーの権限管理 ルートユーザの普段使いはダメ！  
   - IAMユーザーを作成しよう。 1) グループの作成 2) ユーザーの作成  
-  - **IAM:Identity and Access Manegement** AWSの利用者を管理するためのサービス
-  >https://aws.amazon.com/jp/iam/
-  >
+ - **IAM:Identity and Access Manegement** AWSの利用者を管理するためのサービス。IAMユーザーは一人ひとつ！  
+ https://aws.amazon.com/jp/iam/
+- IAMユーザーの作り方
+  - 1. IAMグループの作成：グループ名の作成、グループにポリシーをアタッチ
+  > AWSのIAMロールとポリシーの違い https://qiita.com/montama/items/90bb8a3973d101be4690
 - (MFA：多要素認証で不正利用からIAMユーザーを守る）→今回はやってない！
 - リージョンの変更 近いリージョン選択してた方が通信速度早い！
+
+### CloudTrail
 - **CloudTrail**の設定：「いつ誰が何をしたのか？記録してくれるサービス」
 
 ## 1.AWSでサーバーを立てる
