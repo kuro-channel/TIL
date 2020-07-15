@@ -60,7 +60,7 @@ postgres 22127 22121  0 22:54 ?        00:00:00 postgres: autovacuum launcher pr
 postgres 22128 22121  0 22:54 ?        00:00:00 postgres: stats collector process
 root     22131  3425  0 22:54 pts/0    00:00:00 grep --color=auto postgres
 
-systemctl enable postgresql.service #postgresqlを自動起動設定
+$systemctl enable postgresql.service #postgresqlを自動起動設定
 
 $su - postgres #DBに接続してみる
 
@@ -70,7 +70,7 @@ Type "help" for help.
 
 postgres=# psql
 ```
-
+ 
 
 #### 4. OSの基本設定：タイムゾーンの設定、locale（言語）の設定
 ```shell
