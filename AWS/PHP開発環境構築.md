@@ -2,12 +2,12 @@
 
 ### 必要なミドルウェアのインストール
 
-1. まずはyum update  
+#### 1. まずはyum update  
 ```shell
 $yum update -y
 ```
 
-2. PHPとApacheのインストール
+#### 2. PHPとApacheのインストール
 - PHPはApacheのモジュール（部品）扱い：PHPをインストールすると、Apacheもインストールされる
 - Apacheをインストールした際には、自動起動の設定をONにしておく
 
@@ -40,7 +40,7 @@ $systemctl status httpd.service #Apacheのステータス確認
      Docs: man:httpd.service(8)
 ```
 
-3. DBのインストール：今回は「PostgreSQL」
+#### 3. DBのインストール：今回は「PostgreSQL」
 - yumでインストールする（Amazon Linux2系でのPostgreSQLのバージョンは9系）
 ```shell
 $yum install postgresql-server postgresql-devel postgresql-contrib #postgresqlをインストール
@@ -70,7 +70,7 @@ postgres=# psql
 ```
 
 
-4. OSの基本設定：タイムゾーンの設定、locale（言語）の設定
+#### 4. OSの基本設定：タイムゾーンの設定、locale（言語）の設定
 ```shell
 $date #サーバ時間の確認
 
