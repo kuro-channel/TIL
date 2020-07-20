@@ -45,3 +45,70 @@ drwx------ 2 root root  6 Jul 21 00:26 dir
 fsckコマンドはe2fsckコマンドなどのフロントエンドとして統一的に使えます。
 
 - プロセスにシグナルを送ることができるコマンドはkillおよびkillallです。
+- fdiskコマンドで、MBR形式のハードディスクに対してパーティションの作成、削除、変更および情報表示を行えます。
+- apt-cacheはDebian形式のパッケージ情報の検索・参照などを行うコマンドです
+- 標準出力先のデフォルトはディスプレイです。標準出力先をディスプレイからファイルに切り替えるには、リダイレクト演算子の「>」または「>>」を使用します
+
+```
+個々の仮想マシンの環境設定やハードディスクはファイルとして保存されます。それらのファイルをコピーすることで任意の仮想マシンをクローンとして複製できるため、テンプレートとして使用したり、同様の仕様のシステム展開が容易にできるようになります。ただし、同一の仮想化ソフトウェア上で複製した仮想マシンのUUID（Universally Unique Identifier: 汎用一意識別子、全世界で重複が起きないように生成される一意な値）が重複していると正常に動作しませんので、注意が必要です。
+また、ホスト名やIPアドレス、SSH接続時に使用するSSHホスト鍵（公開鍵、秘密鍵）などサーバごとに一意でなければならないものも変更しなければなりません。
+
+上記に加えて、systemdのマシンはホストを識別するための32バイトのマシンIDを持っています。インストール時に、ランダムに生成されるUUIDがマシンIDとして設定されます。仮想マシンを複製するとマシンIDもコピーされるので、ネットワーク内で重複しないようにクローンのマシンIDを初期化する必要があります。
+```
+- apt-getコマンドは、インターネット上ないしはメディア上のパッケージ情報のデータベースを使い、依存関係を調整しながら、パッケージのインストール・アンインストールなどを行えるコマンド
+- dpkgツールにおいてインストール済みのパッケージを再設定するコマンドはdpkg-reconfigureです。
+- 環境変数HISTFILESIZEを0にすると、コマンド履歴保存ファイルにコマンド履歴が保存されなくなります。
+- killコマンドでシグナルを指定しない場合は、デフォルトでTERM(SIGTERM)が使用されます。
+
+```
+$cat /etc/inittab
+# inittab is no longer used when using systemd.
+#
+# ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.
+#
+# Ctrl-Alt-Delete is handled by /usr/lib/systemd/system/ctrl-alt-del.target
+#
+# systemd uses 'targets' instead of runlevels. By default, there are two main targets:
+#
+# multi-user.target: analogous to runlevel 3
+# graphical.target: analogous to runlevel 5
+#
+# To view current default target, run:
+# systemctl get-default
+#
+# To set a default target, run:
+# systemctl set-default TARGET.target
+#
+```
+- yumコマンドを使用して、アップデート可能なパッケージを確認したい: yum check-update
+- tarコマンドは複数のファイルをまとめて1つのファイル（アーカイブ）にする、またはアーカイブを展開する際に使用するコマンドです。アーカイブを展開することなくアーカイブの内容を確認することもできます。
+- システム起動時には様々なメッセージが出力されます。起動時に出力されたメッセージは後からdmesgコマンドで確認できます。
+
+- touchコマンドは、空のファイルを作成したり、ファイルのタイムスタンプ（アクセス時刻や修正時刻）を変更する際に利用します。
+```
+$ls -l
+total 4
+drwx------ 2 root root  6 Jul 21 00:26 dir
+-rw-r--r-- 1 root root 20 Jul 21 00:51 file.txt
+$touch file.txt
+$ ls -l
+total 4
+drwx------ 2 root root  6 Jul 21 00:26 dir
+-rw-r--r-- 1 root root 20 Jul 21 01:51 file.txt
+```
+
+- ZypperはopenSUSE（SUSE Linuxから改名）が採用しているコマンドラインのパッケージ管理ツールです。
+aptコマンドやyumコマンドのように、zypperコマンドでリポジトリやパッケージの操作を行えます。
+- ランレベルとはLinuxの動作モードのこと
+
+|ランレベル|意味|
+|--|--|
+|0	|システム停止処理中|
+|1	|シングルユーザーモード|
+|2	|NFSを使わないマルチユーザーモード|
+|3	|フルマルチユーザーモード|
+|4	|未使用|
+|5	|グラフィカルログイン|
+|6	|リブート中|
+
+- 「/etc/inittab」を設定ファイルとして使用しないinitプログラムは「Upstart」と「systemd」です。最近のシステムではinitプログラムとして、Upstartやsystemdが採用されることが多くなっています。
