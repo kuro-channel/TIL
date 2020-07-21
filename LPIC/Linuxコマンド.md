@@ -26,6 +26,9 @@ $vi ファイル
 :set number　行番号表示
 ```
 
+### touchコマンド
+
+
 ### trコマンド
 - trコマンドは変換対象を標準入力からのみ受け付けます。
 
@@ -250,6 +253,12 @@ sed -i 's/ootsuka/kuroiwa-t/g' param_mail.conf
 
 ### findコマンド
 - ファイルの検索
+
+|コマンド|概要|
+|--------|----|
+|**-name ファイル名**|文字列を検索パターンとして扱う|  
+f
+
 ```shell
 $find *.sql // 拡張子「sql」のファイルを確認する
 $find ./ -name \*.conf
