@@ -527,3 +527,49 @@ $diff -u file1 file2
 $shutdown -r +10 "Rebooting in 10 minutes"
 $shutdown -r 23:00 "Rebooting in 10 minutes"
 ```
+
+### paste コマンド
+- 複数のファイルを行単位で結合するコマンド
+
+```
+# cat test1.txt
+群馬県
+東京都
+
+神奈川県
+# cat test2.txt
+前橋市
+大田区
+川崎市
+# paste test1.txt test2.txt
+群馬県  前橋市
+東京都  大田区
+神奈川県        川崎市
+```
+
+### split コマンド
+- 指定した行数でファイルを分割するコマンド
+```
+split [-行数] [入力ファイル名 [出力ファイル名]]
+split [-l 行数] [入力ファイル名 [出力ファイル名]]
+```
+```shell
+# split -500 file
+# ls
+file  xaa
+```
+
+### wc コマンド
+- ファイル内の文字数や行数を調べることができるコマンド
+  - 行数、単語数、文字(バイト)数の順に表示
+
+|コマンド|概要|
+|--------|----|
+|**-l**|行数を表示|  
+|**-w**|単語数を表示|
+|**-c**|文字（バイト）数を表示|
+
+```
+$wc /etc/httpd/conf/httpd.conf
+  362  1816 11910 /etc/httpd/conf/httpd.conf
+```
