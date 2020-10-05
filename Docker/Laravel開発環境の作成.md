@@ -1,4 +1,4 @@
-## docker × Laravel 開発環境構築
+## docker × Laravel 開発環境構築（Laradock使用）
 
 - 前提環境
   - Windows 10 Home
