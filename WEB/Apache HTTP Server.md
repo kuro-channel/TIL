@@ -17,3 +17,4 @@ grep "日付" ログファイル名 | awk '{print $7}' | sort | uniq -c | sort -
 例) grep "18/Dec/2016" /var/log/httpd/access_log | awk '{print $7}' | sort | uniq -c | sort -rn
 ```
 > 参考：Apache ログを awk と uniq だけで集計する https://qiita.com/bezeklik/items/f5c292c4360cde140bef
+> 
