@@ -49,4 +49,4 @@ https://a.example.com/about
   - index.phpでリクエストURLを解析し、各Controllerに割り振る。
   - 「どんなアクセスでも、ひとまず受け止める」 > **フロントコントローラー**と呼ぶ。
   - やること! 1. 「.htaccessの設定」（WEBのルートディレクトリを配置） : .htaccessですべてのアクセスを「index.php」にリダイレクトする。
-   
+
