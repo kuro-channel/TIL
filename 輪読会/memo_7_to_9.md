@@ -1,6 +1,6 @@
 前回記事：
-[輪読会メモ：リーダブルコード（第1~3章）](https://qiita.com/takumi_links/items/34e98d7dbbe0532a69d1)
-[輪読会メモ：リーダブルコード（第4~6章）](https://qiita.com/takumi_links/items/1d85f91cbaf6ab1c03ec)
+[輪読会メモ：リーダブルコード（第1~3章）](https://qiita.com/takumi_links/items/34e98d7dbbe0532a69d1)  
+[輪読会メモ：リーダブルコード（第4~6章）](https://qiita.com/takumi_links/items/1d85f91cbaf6ab1c03ec)  
 
 今回は第7章～第9章まで。
 7~9章は、**ループとロジックの単純化**が大きなテーマとなっています。
