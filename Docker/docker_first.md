@@ -134,3 +134,5 @@ $ docker run docker/whalesay cowsay OK!
 - イメージ詳細情報：`docker inspect docker/whalesay`
 - イメージの削除：`docker rmi docker/whalesay`
   - 強制削除：`docker rmi -f docker/whalesay`
+
+まず雰囲気を掴んでもらったうえで、今後はdokcerイメージを自分で構築してもらうステップに進みます。
