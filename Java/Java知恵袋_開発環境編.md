@@ -137,7 +137,6 @@ Hello, World!
 
 ### 所要時間
 30~1時間、すでにJDKのインストールが完了している場合はもっと早くできると思います。
-#image(Amazon Corretto11 ダウンロードサイト.png)
 
 ### 次のステップ
 Tomcat上で動くJava Webアプリケーション開発環境構築（Visual Studio Code）
